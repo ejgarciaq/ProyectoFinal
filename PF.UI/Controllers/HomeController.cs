@@ -50,15 +50,20 @@ namespace PF.UI.Controllers
                 }
                 else 
                 {
-                    return Index("No Encontro sus datos");
+                    return RedirectToAction("Index", new { message = "no encontramos los datos"});
                 }
             }
             else
             {
-                return Index("Llena los campos para iniciar");
+                return RedirectToAction("Index", new { message = "Llena los campos para iniciar" });
             }
 
         }
-
+        // cerrar sesión
+        public ActionResult Logout() 
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
